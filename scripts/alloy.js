@@ -1,5 +1,5 @@
-const titanium = createInstance({ name: "titanium" });
-const copper = createInstance({ name: "copper" });
+alloy("createInstance", { name: "titanium" });
+alloy("createInstance", { name: "copper" });
 
 titanium("configure", {
   datastreamId: "b68d0ba1-084b-4827-aaad-d34f192e552c",
