@@ -15,11 +15,17 @@
         (n[o] = function () {
           var u = arguments;
           return new Promise(function (i, l) {
-            n[o].q.push([i, l, u]);
+            n.setTimeout(function () {
+              n[o].q.push([i, l, u]);
+            });
           });
         }),
         (n[o].q = []));
     });
-  })(window, ['titanium', 'copper']);
+  })(window, ['alloy']);
 </script>
-<script nonce="aem" src="/scripts/alloy.js" async></script>
+<script
+  nonce="aem"
+  src="https://cdn1.adoberesources.net/alloy/2.19.1/alloy.min.js"
+  async
+></script>
