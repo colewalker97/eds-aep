@@ -1,5 +1,3 @@
-import { createInstance } from "@adobe/alloy";
-
 const titanium = createInstance({ name: "titanium" });
 const copper = createInstance({ name: "copper" });
 
