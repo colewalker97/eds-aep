@@ -129,7 +129,7 @@ async function loadEager(doc) {
     await import("../plugins/martech/src/alloy.min.js");
 
     return window.copper("configure", {
-      datastreamId: "dcc2912d-24b2-498d-85f4-f275d8d99969",
+      datastreamId: "2bd4072a-574a-4698-8285-4224b17a31e5",
       orgId: "89897F595D832D240A495FE6@AdobeOrg",
       debugEnabled: true,
     });
