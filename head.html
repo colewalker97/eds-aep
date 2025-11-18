@@ -7,55 +7,18 @@
 <script nonce="aem" src="/scripts/aem.js" type="module"></script>
 <script nonce="aem" src="/scripts/scripts.js" type="module"></script>
 <link rel="stylesheet" href="/styles/styles.css" />
-<script nonce="aem">
-  !(function (n, o) {
-    o.forEach(function (o) {
-      n[o] ||
-        ((n.__alloyNS = n.__alloyNS || []).push(o),
-        (n[o] = function () {
-          var u = arguments;
-          return new Promise(function (i, l) {
-            n[o].q.push([i, l, u]);
-          });
-        }),
-        (n[o].q = []));
-    });
-  })(window, ['titanium', 'copper']);
-</script>
-<script
+<link
   nonce="aem"
-  src="https://cdn1.adoberesources.net/alloy/2.19.1/alloy.min.js"
-  async
-></script>
-<script nonce="aem">
-  window.addEventListener('load', function () {
-    if (window.alloy) {
-      alloy('createInstance', { name: 'titanium' });
-      alloy('createInstance', { name: 'copper' });
-
-      titanium('configure', {
-        datastreamId: 'b68d0ba1-084b-4827-aaad-d34f192e552c',
-        orgId: 'FFCD7E1464AD1F2F0A495FB7@AdobeOrg',
-        debugEnabled: true,
-      });
-
-      titanium('sendEvent', {
-        data: {
-          key: 'value',
-        },
-      });
-
-      copper('configure', {
-        datastreamId: 'dcc2912d-24b2-498d-85f4-f275d8d99969',
-        orgId: '89897F595D832D240A495FE6@AdobeOrg',
-        debugEnabled: true,
-      });
-
-      copper('sendEvent', {
-        data: {
-          key: 'value',
-        },
-      });
-    }
-  });
-</script>
+  rel="preload"
+  as="script"
+  crossorigin="anonymous"
+  href="/plugins/martech/src/index.js"
+/>
+<link
+  nonce="aem"
+  rel="preload"
+  as="script"
+  crossorigin="anonymous"
+  href="/plugins/martech/src/alloy.min.js"
+/>
+<link rel="preconnect" href="https://edge.adobedc.net" />
