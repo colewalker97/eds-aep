@@ -103,37 +103,37 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  // const titaniumPromise = initMartech(
-  //   {
-  //     datastreamId: "b68d0ba1-084b-4827-aaad-d34f192e552c",
-  //     orgId: "FFCD7E1464AD1F2F0A495FB7@AdobeOrg",
-  //     debugEnabled: true,
-  //     onBeforeEventSend: (payload) => {},
-  //   },
-  //   {
-  //     alloyInstanceName: "titanium",
-  //   },
-  // );
+  const titaniumPromise = initMartech(
+    {
+      datastreamId: "b68d0ba1-084b-4827-aaad-d34f192e552c",
+      orgId: "FFCD7E1464AD1F2F0A495FB7@AdobeOrg",
+      debugEnabled: true,
+      onBeforeEventSend: (payload) => {},
+    },
+    {
+      alloyInstanceName: "titanium",
+    },
+  );
 
-  // const initCopper = async () => {
-  //   window.__alloyNS ||= [];
-  //   window.__alloyNS.push("copper");
-  //   window.copper = (...args) =>
-  //     new Promise((resolve, reject) => {
-  //       window.setTimeout(() => {
-  //         window.copper.q.push([resolve, reject, args]);
-  //       });
-  //     });
-  //   window.copper.q = [];
+  const initCopper = async () => {
+    window.__alloyNS ||= [];
+    window.__alloyNS.push("copper");
+    window.copper = (...args) =>
+      new Promise((resolve, reject) => {
+        window.setTimeout(() => {
+          window.copper.q.push([resolve, reject, args]);
+        });
+      });
+    window.copper.q = [];
 
-  //   await import("../plugins/martech/src/alloy.min.js");
+    await import("../plugins/martech/src/alloy.min.js");
 
-  //   return window.copper("configure", {
-  //     datastreamId: "2bd4072a-574a-4698-8285-4224b17a31e5",
-  //     orgId: "89897F595D832D240A495FE6@AdobeOrg",
-  //     debugEnabled: true,
-  //   });
-  // };
+    return window.copper("configure", {
+      datastreamId: "2bd4072a-574a-4698-8285-4224b17a31e5",
+      orgId: "89897F595D832D240A495FE6@AdobeOrg",
+      debugEnabled: true,
+    });
+  };
 
   document.documentElement.lang = "en";
   decorateTemplateAndTheme();
@@ -143,8 +143,8 @@ async function loadEager(doc) {
     decorateMain(main);
     document.body.classList.add("appear");
     await Promise.all([
-      // titaniumPromise.then(martechEager),
-      // initCopper(),
+      titaniumPromise.then(martechEager),
+      initCopper(),
       loadSection(main.querySelector(".section"), waitForFirstImage),
     ]);
   }
@@ -164,7 +164,7 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector("header"));
   loadFooter(doc.querySelector("footer"));
-  // await martechLazy();
+  await martechLazy();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
