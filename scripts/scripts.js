@@ -115,25 +115,25 @@ async function loadEager(doc) {
     },
   );
 
-  const initCopper = async () => {
-    window.__alloyNS ||= [];
-    window.__alloyNS.push("copper");
-    window.copper = (...args) =>
-      new Promise((resolve, reject) => {
-        window.setTimeout(() => {
-          window.copper.q.push([resolve, reject, args]);
-        });
-      });
-    window.copper.q = [];
+  // const initCopper = async () => {
+  //   window.__alloyNS ||= [];
+  //   window.__alloyNS.push("copper");
+  //   window.copper = (...args) =>
+  //     new Promise((resolve, reject) => {
+  //       window.setTimeout(() => {
+  //         window.copper.q.push([resolve, reject, args]);
+  //       });
+  //     });
+  //   window.copper.q = [];
 
-    await import("../plugins/martech/src/alloy.min.js");
+  //   await import("../plugins/martech/src/alloy.min.js");
 
-    return window.copper("configure", {
-      datastreamId: "2bd4072a-574a-4698-8285-4224b17a31e5",
-      orgId: "89897F595D832D240A495FE6@AdobeOrg",
-      debugEnabled: true,
-    });
-  };
+  //   return window.copper("configure", {
+  //     datastreamId: "2bd4072a-574a-4698-8285-4224b17a31e5",
+  //     orgId: "89897F595D832D240A495FE6@AdobeOrg",
+  //     debugEnabled: true,
+  //   });
+  // };
 
   document.documentElement.lang = "en";
   decorateTemplateAndTheme();
@@ -144,7 +144,7 @@ async function loadEager(doc) {
     document.body.classList.add("appear");
     await Promise.all([
       titaniumPromise.then(martechEager),
-      initCopper(),
+      // initCopper(),
       loadSection(main.querySelector(".section"), waitForFirstImage),
     ]);
   }
@@ -176,7 +176,7 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   window.setTimeout(() => {
-    // martechDelayed();
+    martechDelayed();
     import("./delayed.js");
   }, 3000);
 }
