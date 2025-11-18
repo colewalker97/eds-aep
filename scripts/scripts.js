@@ -103,17 +103,17 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  const titaniumPromise = initMartech(
-    {
-      datastreamId: "b68d0ba1-084b-4827-aaad-d34f192e552c",
-      orgId: "FFCD7E1464AD1F2F0A495FB7@AdobeOrg",
-      debugEnabled: true,
-      onBeforeEventSend: (payload) => {},
-    },
-    {
-      alloyInstanceName: "titanium",
-    },
-  );
+  // const titaniumPromise = initMartech(
+  //   {
+  //     datastreamId: "b68d0ba1-084b-4827-aaad-d34f192e552c",
+  //     orgId: "FFCD7E1464AD1F2F0A495FB7@AdobeOrg",
+  //     debugEnabled: true,
+  //     onBeforeEventSend: (payload) => {},
+  //   },
+  //   {
+  //     alloyInstanceName: "titanium",
+  //   },
+  // );
 
   // const initCopper = async () => {
   //   window.__alloyNS ||= [];
@@ -143,7 +143,7 @@ async function loadEager(doc) {
     decorateMain(main);
     document.body.classList.add("appear");
     await Promise.all([
-      titaniumPromise.then(martechEager),
+      // titaniumPromise.then(martechEager),
       // initCopper(),
       loadSection(main.querySelector(".section"), waitForFirstImage),
     ]);
@@ -164,7 +164,7 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector("header"));
   loadFooter(doc.querySelector("footer"));
-  await martechLazy();
+  // await martechLazy();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
@@ -176,7 +176,7 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   window.setTimeout(() => {
-    martechDelayed();
+    // martechDelayed();
     import("./delayed.js");
   }, 3000);
 }
